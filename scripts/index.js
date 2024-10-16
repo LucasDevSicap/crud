@@ -30,7 +30,6 @@ $(document).ready(function() {
 
 
 function createUser() {
-    // Captura os dados do formulário
     const userData = {
         name: $('#name').val(),
         cpf: $('#cpf').val(),
@@ -44,16 +43,13 @@ function createUser() {
         nivel: $('#nivel').val()
     };
 
-    // Envia os dados para o back-end usando AJAX
     $.ajax({
         url: 'http://localhost/crud-php/cadastro.php',
         type: 'POST',
         data: userData,
         success: function(response) {
-            // Supondo que o backend retorne uma mensagem de sucesso
             Swal.fire('Sucesso!', response.message, 'success');
-            // Opcionalmente, você pode adicionar o novo cliente à tabela aqui
-            $('#cadastroModal').modal('hide'); // Fecha o modal após o cadastro
+            $('#cadastroModal').modal('hide'); 
             $('#results').append(`
                 <tr>
                     <td>${userData.name}</td>

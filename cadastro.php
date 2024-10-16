@@ -17,9 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     echo($name);
 
-    // Aqui você pode adicionar a lógica para salvar os dados no banco de dados
-
-    // Retorne uma resposta
     echo json_encode(['message' => 'Cadastro realizado com sucesso!']);
 }
 ?>
