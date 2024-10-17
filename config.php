@@ -1,7 +1,7 @@
 <?php
 $host = 'localhost';
 $port = '5432';
-$dbname = 'desenvolvedores_db';
+$dbname = 'dev_crud';
 $user = 'postgres';
 $password = '123';
 

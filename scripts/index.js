@@ -40,8 +40,10 @@ function createUser() {
         especialidade: $('#especialidade').val(),
         stack: $('#stack').val(),
         linguagens: $('#linguagens').val(),
-        nivel: $('#nivel').val()
+        observacao: $('#observacao').val()
     };
+
+    console.log($('#observacao').val());
 
     $.ajax({
         url: 'http://localhost/crud-php/cadastro.php',
@@ -65,4 +67,5 @@ function createUser() {
         }
     });
 }
+
 
