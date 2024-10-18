@@ -1,21 +1,23 @@
 <?php
 header('Access-Control-Allow-Origin: *');
+header('Content-Type: application/json');
 require_once('config.php');
 
-$id=$_POST['id'];
+if (isset($_GET['id'])) {
+    $id = intval($_GET['id']);
 
-if(empty($id)){
-    echo json_encode(["message"=>"Não foi passado nenhum id"]);
-}else{
-    $sql="DELETE FROM developers WHERE id='$id'";
+    try {
+        $stmt = $pdo->prepare("DELETE FROM developers WHERE id = :id");
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
 
-    $response = $connection->query($sql);
+        echo json_encode(["message" => "Usuário removido com sucesso!"]);
 
-    if($response === TRUE){
-        echo json_encode(["message"=>"Usuário deletado com sucesso"]);
-    }else{
-        echo json_encode(["message" => "Error ao excluir usuário"]);
+    } catch (PDOException $e) {
+        http_response_code(500);
+        echo json_encode(["message" => "Erro ao remover o usuário: " . $e->getMessage()]);
     }
+} else {
+    echo json_encode(["message" => "ID não informado."]);
 }
-
 ?>
