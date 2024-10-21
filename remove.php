@@ -12,12 +12,12 @@ if (isset($_GET['id'])) {
         $stmt->execute();
 
         echo json_encode(["message" => "Usuário removido com sucesso!"]);
-
     } catch (PDOException $e) {
         http_response_code(500);
         echo json_encode(["message" => "Erro ao remover o usuário: " . $e->getMessage()]);
     }
 } else {
+    http_response_code(400);
     echo json_encode(["message" => "ID não informado."]);
 }
 ?>

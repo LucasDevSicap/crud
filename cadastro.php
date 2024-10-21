@@ -12,14 +12,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $cidade = $_POST['cidade'];
     $estado = $_POST['estado'];
-    $especialidade = $_POST['especialidade'];
     $stack = $_POST['stack'];
     $observacao = $_POST['observacao'];
 
     try {
+        // Corrigido: adicionar o parêntese que faltava no final da instrução VALUES
         $stmt = $pdo->prepare("INSERT INTO public.developers 
-            (nome, cidade, observacao, funcao, estado, nivel, cpf, telefone, email ) 
-            VALUES (:nome, :cidade, :observacao, :funcao, :estado, :nivel, :cpf, :telefone, :email");
+            (nome, cidade, observacao, funcao, estado, nivel, cpf, telefone, email) 
+            VALUES (:nome, :cidade, :observacao, :funcao, :estado, :nivel, :cpf, :telefone, :email)");
 
         $stmt->bindParam(':nome', $name);
         $stmt->bindParam(':cidade', $cidade);
@@ -38,4 +38,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo json_encode(['message' => 'Erro ao cadastrar: ' . $e->getMessage()]);
     }
 }
-?>

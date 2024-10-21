@@ -8,7 +8,6 @@ Instalação
 Para iniciar o cliente e o servidor, utilize o comando npm start. Para criar a tabela no MySQL, utilize o seguinte comando SQL:
 -- Database: dev_crud
 
--- DROP DATABASE IF EXISTS dev_crud;
 
 CREATE DATABASE dev_crud
     WITH
@@ -24,8 +23,6 @@ CREATE DATABASE dev_crud
 
 
 -- Table: public.developers
-
--- DROP TABLE IF EXISTS public.developers;
 
 CREATE TABLE IF NOT EXISTS public.developers
 (
